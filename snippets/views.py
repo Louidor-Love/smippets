@@ -61,7 +61,7 @@ class Login(View):
         if user is None:
             return render(request, 'login.html', {
                 'form': AuthenticationForm(),
-                "error": "Usuario o contraseña incorrectos"
+                "error": "Nombre de usuario o Contraseña incorrecto"
             })
         else:
             login(request, user)
@@ -73,7 +73,7 @@ class Login(View):
 class Logout(View):
     def get(self, request):
         logout(request)
-        return redirect('signin')
+        return redirect('login')
 
 
 class Index(View):
