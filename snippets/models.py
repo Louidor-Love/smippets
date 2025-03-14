@@ -2,7 +2,19 @@ from __future__ import unicode_literals
 
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils.text import slugify
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    slug = models.SlugField(unique=True, blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:  
+            self.slug = self.user.username 
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.user.username
 
 class Language(models.Model):
     name = models.CharField(max_length=50)

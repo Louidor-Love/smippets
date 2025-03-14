@@ -22,7 +22,13 @@
                         <hr>
                         <br>
                         <a href="{% url 'snippet_edit' id=snippet.id %}" class="btn btn-info">Editar</a>
-                        <a href="{% url 'snippet_delete' id=snippet.id %}" class="btn btn-danger">Eliminar</a>
+                             <!-- Formulario para eliminar snippet -->
+                        <form action="{% url 'snippet_delete' id=snippet.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este snippet?');">
+                                Eliminar
+                            </button>
+                        </form>
                     {% endif %}
                 </div>
             </div>
