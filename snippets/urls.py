@@ -17,7 +17,7 @@ urlpatterns = [
         name="user_snippets",
     ),
     path("snippets/snippet/<int:id>/", views.SnippetDetails.as_view(), name="snippet"),
-    #path("snippets/add/", views.SnippetAdd.as_view(), name="snippet_add"),
+    path("snippets/add/", views.SnippetAdd.as_view(), name="snippet_add"),
     #path("snippets/edit/<int:id>/", views.SnippetEdit.as_view(), name="snippet_edit"),
     #path(
     #    "snippets/delete/<int:id>/",
