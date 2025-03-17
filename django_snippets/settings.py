@@ -85,6 +85,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "django_snippets.wsgi.application"
+load_dotenv('snippets.env')
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
@@ -99,7 +100,7 @@ WSGI_APPLICATION = "django_snippets.wsgi.application"
 DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default='postgresql://snippets_rab4_user:92DWBGCrOSKussY8na4sJJg3lXhMxAlp@dpg-cvc29fhc1ekc73b81u8g-a/snippets_rab4',
+        default=os.getenv("DATABASE_URL"),
         conn_max_age=600
     )
 }
@@ -147,7 +148,7 @@ if not DEBUG:
     # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
     # and renames the files with unique names for each version to support long-term caching
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-    
+
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_DIR, "static")
 
@@ -158,7 +159,7 @@ django_heroku.settings(locals())
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-load_dotenv('snippets.env')
+
 EMAIL_HOST = os.getenv("EMAIL_HOST")
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
