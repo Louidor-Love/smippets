@@ -13,10 +13,8 @@
                     <h6 class="card-subtitle mb-2 text-muted">Creado: {{ snippet.created }}</h6>
                     <h6 class="card-subtitle mb-2 text-muted">Actualizado: {{ snippet.updated }}</h6>
                     <p class="card-text">{{ snippet.description }}</p>
-                    <div>
-                        <!-- Código del Snippet -->
-                        <samp>{{ snippet.snippet|safe }}</samp>
-                        <!-- Código del Snippet -->
+                    <div class="code-snippet">
+                        <pre>{{ highlighted_code|safe }}</pre>  <!-- Mostrar el código con formato HTML -->
                     </div>
                     {% if request.user.username == snippet.user.username %}
                         <hr>

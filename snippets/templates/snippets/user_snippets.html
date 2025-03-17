@@ -18,7 +18,7 @@
                         <a href="{% url 'snippet' id=i.id %}" class="btn btn-primary">Ver</a>
                         {% if request.user.username == i.user.username %}
                             <a href="{% url 'snippet_edit' id=i.id %}" class="btn btn-info">Editar</a>
-                            <form action="{% url 'snippet_delete' id=snippet.id %}" method="post" style="display:inline;">
+                            <form action="{% url 'snippet_delete' id=i.id %}" method="post" style="display:inline;">
                                 {% csrf_token %}
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este snippet?');">
                                     Eliminar
