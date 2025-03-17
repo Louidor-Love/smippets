@@ -3,5 +3,7 @@ db.sqlite3
 .DS_Store
 venv/
 snippets.env/
+snippets.env
 .idea/
-.env
+.env"snippets.env"  
+__pycache__
